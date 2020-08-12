@@ -1,5 +1,5 @@
 
-from log import logging, fileHandler
+from src.log import logging, fileHandler
 
 logger = logging.getLogger(__name__)
 logger.addHandler(fileHandler)
