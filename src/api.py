@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, abort, make_response
 
-from .tasks import longtime_add
+from .tasks import longtime_add, check_obj
 from .log import logging, fileHandler
 
 logger = logging.getLogger(__name__)
@@ -36,11 +36,21 @@ def process_task():
 @app.route('/api/', methods=['POST', 'PUT'])
 def process_task2():
     content = request.get_json()
-    # result = longtime_add.delay(content['first'], content['second'])
     data = content['first'], content['second']
+    result = longtime_add.delay(data)
     result = longtime_add.apply_async(data, countdown=10)
     result = longtime_add.apply_async(args=data, countdown=10)
     result = longtime_add.apply_async(kwargs=content, countdown=10)
+    return jsonify({'message': 'OK', 'id': result.id})
+
+
+@app.route('/api/obj/', methods=['POST', 'PUT'])
+def process_obj():
+    content = request.get_json()
+    result = check_obj.delay(content)
+    result = check_obj.apply_async((content,))
+    result = check_obj.apply_async(args=(content,))
+    result = check_obj.apply_async(kwargs={"obj": content})
     return jsonify({'message': 'OK', 'id': result.id})
 
 
