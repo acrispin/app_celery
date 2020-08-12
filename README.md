@@ -64,6 +64,10 @@ flower --broker=amqp://guest:guest@localhost:5672/ --port=5555 --basic_auth=admi
 
 ### flask
 * https://flask.palletsprojects.com/en/1.1.x/quickstart/
+* https://stackoverflow.com/questions/20001229/how-to-get-posted-json-in-flask
+* https://techtutorialsx.com/2017/01/07/flask-parsing-json-data/
+* https://riptutorial.com/flask/example/5832/receiving-json-from-an-http-request
+* https://gist.github.com/hirobert/394981a661cbf78d442e
 ```
 python src/api.py
 ```
