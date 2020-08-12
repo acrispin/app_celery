@@ -8,8 +8,8 @@ logger.addHandler(fileHandler)
 
 
 @app.task
-def longtime_add(x, y):
-    logger.info("Inicio de tarea, esperando 4 segundos")
-    time.sleep(4)
+def longtime_add(first, second):
+    logger.info("Inicio de tarea, esperando 5 segundos")
+    time.sleep(5)
     logger.info('Finalizacion de tarea')
-    return f"{x} + {y} = {x + y}"
+    return f"{first} + {second} = {first + second}"

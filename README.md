@@ -12,9 +12,12 @@ celery -A src worker -l info
 * https://www.distributedpython.com/2018/10/26/celery-execution-pool/
 ```
 celery -A src worker -l info --pool=solo
+celery -A src worker -l info --pool=threads
+celery -A src worker -l info -P threads
 ```
 
 ### Call task
+* https://pawelzny.com/python/celery/2017/08/14/celery-4-tasks-best-practices/
 ``` python
 >>> from src.tasks import longtime_add
 >>> longtime_add.delay(12, 17)
