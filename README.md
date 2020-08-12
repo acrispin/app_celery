@@ -61,3 +61,9 @@ flower --broker=amqp://guest:guest@localhost:5672/ --port=5555
 ```
 flower --broker=amqp://guest:guest@localhost:5672/ --port=5555 --basic_auth=admin:12345678
 ```
+
+### flask
+* https://flask.palletsprojects.com/en/1.1.x/quickstart/
+```
+python src/api.py
+```
