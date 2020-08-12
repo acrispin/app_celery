@@ -41,3 +41,23 @@ PENDING -> STARTED -> SUCCESS
 >>> res.state
 PENDING -> STARTED -> RETRY -> STARTED -> RETRY -> STARTED -> SUCCESS
 ```
+
+### flower install
+```
+pip install flower
+```
+
+### flower run with redis
+```
+flower --broker=redis://localhost:6379/0 --port=5555
+```
+
+### flower run with rabbit
+```
+flower --broker=amqp://guest:guest@localhost:5672/ --port=5555
+```
+
+### flower run with rabbit
+```
+flower --broker=amqp://guest:guest@localhost:5672/ --port=5555 --basic_auth=admin:12345678
+```
