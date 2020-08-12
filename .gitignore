@@ -40,3 +40,5 @@ requirements.txt.sample
 queue/
 
 output/
+
+flower.*

@@ -1,10 +1,16 @@
 from flask import Flask, request, jsonify, abort, make_response
+from decouple import config
 
 from .tasks import longtime_add, check_obj
 from .log import logging, fileHandler
 
 logger = logging.getLogger(__name__)
 logger.addHandler(fileHandler)
+
+DEBUG = config('DEBUG', default=False, cast=bool)
+FLASK_HOST = config('FLASK_HOST', default='0.0.0.0', cast=str)
+FLASK_PORT = config('FLASK_PORT', default='5000', cast=str)
+
 
 app = Flask(__name__)
 
@@ -55,4 +61,4 @@ def process_obj():
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port='5000', debug=True)
+    app.run(host=FLASK_HOST, port=FLASK_PORT, debug=DEBUG)
