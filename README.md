@@ -72,7 +72,16 @@ flower --broker=amqp://guest:guest@localhost:5672/ --port=5555 --basic_auth=admi
 python src/api.py
 ```
 
+### flask, otra forma de ejecutarlo con -m para evitar error: "_ImportError: attempted relative import with no known parent package_"
+* https://napuzba.com/a/import-error-relative-no-parent/p4
+```
+python -m src.api
+```
+
 ### flask restful 
 * https://unipython.com/como-hacer-paso-a-paso-una-api-restful-en-flask-con-python/
 * https://dev.to/aligoren/building-basic-restful-api-with-flask-restful-57oh
 * https://blog.j-labs.pl/flask-restful
+
+### pycharm, pycharm run python module
+* https://intellij-support.jetbrains.com/hc/en-us/community/posts/360003879119-how-to-run-python-m-command-in-pycharm-

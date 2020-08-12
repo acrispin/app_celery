@@ -1,5 +1,10 @@
 from flask import Flask, request, jsonify, abort, make_response
 
+from .log import logging, fileHandler
+
+logger = logging.getLogger(__name__)
+logger.addHandler(fileHandler)
+
 app = Flask(__name__)
 
 
@@ -10,12 +15,12 @@ def hello_world():
 
 @app.route('/api/', methods=['POST', 'PUT'])
 def post_json():
-    print(request.is_json)
-    print(request.json, type(request.json))
+    logger.info(request.is_json)
+    logger.info(request.json)
     content = request.get_json()
     # abort(404)
-    abort(make_response(jsonify({'message': 'msg', 'code': 400, 'status': 'FAIL'}), 500))
-    print(content, type(content))
+    # abort(make_response(jsonify({'message': 'msg', 'code': 400, 'status': 'FAIL'}), 500))
+    logger.info(content)
     return jsonify(content)
 
 
