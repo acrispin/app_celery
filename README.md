@@ -71,3 +71,8 @@ flower --broker=amqp://guest:guest@localhost:5672/ --port=5555 --basic_auth=admi
 ```
 python src/api.py
 ```
+
+### flask restful 
+* https://unipython.com/como-hacer-paso-a-paso-una-api-restful-en-flask-con-python/
+* https://dev.to/aligoren/building-basic-restful-api-with-flask-restful-57oh
+* https://blog.j-labs.pl/flask-restful
