@@ -76,7 +76,7 @@ docker-compose up -d --build flower
 * http://localhost:5000/ (flask)
 * http://localhost:5555/ (flower, autenticacion segun parametro _'FLOWER_BASIC_AUTH'_ de .env)
 
-# rabbit
+# RABBIT
 
 ### rabbitmq, install
 * https://www.rabbitmq.com/download.html
@@ -253,4 +253,71 @@ docker-compose down
 docker-compose build rabbitmq
 docker-compose rm -fs rabbitmq
 docker-compose exec rabbitmq bash  
+```
+
+### docker, stop and clean
+* https://gist.github.com/ntarocco/4725e27f7a196d9fe405574152b0e744
+```
+#!/usr/bin/env bash
+
+docker stop $(docker ps -aq)
+
+# docker container prune   # Remove all stopped containers
+# docker volume prune      # Remove all unused volumes
+# docker image prune       # Remove unused images
+# docker system prune      # All of the above, in this order: containers, volumes, images
+echo y | docker system prune
+```
+
+### docker, detener y eliminar todos los contenedores
+* https://blog.jongallant.com/2017/09/unknown-shorthand-flag/
+```
+docker stop $(docker ps -q)
+docker rm $(docker ps -a -q)
+```
+
+### docker, eliminar todas las imagenes
+```
+docker rmi $(docker images -a -q)
+```
+
+# MARKDOWN, Syntax highlighting
+* https://support.codebasehq.com/articles/tips-tricks/syntax-highlighting-in-markdown
+
+# VIRTUALENV and PIP
+
+### upgrade pip, install virtualenv, en linux con sudo, en windows cmd en modo administrador
+```
+python -m pip install --upgrade pip
+pip install virtualenv
+pip --version
+virtualenv --version
+```
+
+### virtualenv, especificar otra version de python instalada en linux
+```
+virtualenv -p /usr/bin/python3 venv  
+source venv/bin/activate
+deactivate
+```
+
+### virtualenv, especificar otra version de python instalada en windows con gitbash
+```
+virtualenv -p /c/Program\ Files/Python37/python.exe venv  
+source venv/Scripts/activate
+deactivate
+```
+
+### virtualenv, especificar otra version de python instalada en windows con cmd
+```
+...>virtualenv -p "C:\Program Files\Python37\python.exe" venv 
+...>venv\Scripts\activate
+...>deactivate
+```
+ 
+### pip, actualizar una libreria
+```
+pip uninstall pyodbc
+pip install pyodbc
+pip freeze > requirements.txt  
 ```
