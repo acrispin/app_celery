@@ -35,6 +35,9 @@ services:
     restart: unless-stopped
     networks:
       - app-network
+    # verificar la carpeta 'logs/api' en la raiz del proyecto, en windows docker lo crea
+    volumes:
+      - ./logs/api:/app/logs
     env_file: .env
     # entrypoint: ["python", "-m", "src.api"]
     # command: ["python", "-m", "src.api"]
@@ -56,6 +59,9 @@ services:
     restart: unless-stopped
     networks:
       - app-network
+    # verificar la carpeta 'logs/worker' en la raiz del proyecto, en windows docker lo crea
+    volumes:
+      - ./logs/worker:/app/logs
     env_file: .env
     command: celery -A src worker -l info --concurrency=8
     depends_on:
@@ -77,6 +83,9 @@ services:
     restart: unless-stopped
     networks:
       - app-network
+    # verificar la carpeta 'logs/flower' en la raiz del proyecto, en windows docker lo crea
+    volumes:
+      - ./logs/flower:/app/logs
     env_file: .env
     command: flower -A src --conf=flowerconfig
     depends_on:

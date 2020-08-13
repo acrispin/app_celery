@@ -211,11 +211,12 @@ docker-compose --version
 docker build -t app_celery:v1.1.0 .
 ```
 
-### docker, check container con bash o sh, opcional indicando el .env file
+### docker, logs and check con bash o sh, opcional indicando el .env file, si el contenedor _'app_celery_api'_ existe
 ```
 docker run -it --rm app_celery:v1.1.0 bash
 docker run -it --rm --env-file .env app_celery:v1.1.0 bash
-docker run -it --rm -p 5000:5000 --env-file .env app_celery:v1.1.0
+docker exec -it app_celery_api bash
+docker logs -f --tail 100 app_celery_api
 ```
 
 ### docker, si la imagen tiene ENTRYPOINT y CMD para ejecutar flask, se indica el puerto 5000

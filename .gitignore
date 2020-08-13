@@ -3,6 +3,7 @@
 # described in https://git-scm.com/docs/gitignore
 
 logs/*.log*
+logs/**/*.log*
 *.egg-info
 *.pot
 *.py[co]
