@@ -1,5 +1,6 @@
 
-## Instalacion modo local (python 3.7)
+# Ejecucion local
+* python 3.7
 
 ### 1 copiar .env.local a .env y editar segun configuracion local
 ```
@@ -12,7 +13,7 @@ cp .env.local .env
 docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 -e "TZ=America/Lima" rabbitmq:3-management
 ```
 
-### 3 crear, activar entorno virtual e instalar dependencias, en winwods (...>venv\Scripts\activate)
+### 3 crear, activar entorno virtual e instalar dependencias, en winwods _(...>venv\Scripts\activate)_
 ```
 pip install virtualenv
 virtualenv venv
@@ -20,7 +21,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4 ejecutar api, worker, flower en diferente terminal (se usa '-P threads' para evitar incompatibilidd en windows)
+### 4 ejecutar api, worker, flower en diferente terminal (se usa _'-P threads'_ para evitar incompatibilidad en windows)
 ```
 python -m src.api
 celery -A src worker -l info -P threads
@@ -29,9 +30,9 @@ flower -A src --conf=flowerconfig
 
 ### 5 probar las url
 * http://localhost:5000/ (flask)
-* http://localhost:5555/ (flower, atenticacion segun 'FLOWER_BASIC_AUTH' de .env)
+* http://localhost:5555/ (flower, autenticacion segun parametro _'FLOWER_BASIC_AUTH'_ de .env)
 
-### 6 probar servicios, '127.0.0.1' o 'localhost'
+### 6 probar servicios, _'127.0.0.1'_ o _'localhost'_
 ```
 GET /api?first=23&second=34 HTTP/1.1
 Host: 127.0.0.1:5000
@@ -50,9 +51,32 @@ Content-Type: application/json
 {
     "device": "TemperatureSensor",
     "value": "20",
-    "timestamp": "25/01/2017 10:10:05"
+    "timestamp": "2020-08-12 10:10:05"
 }
 ```
+
+# Ejecucion con docker
+* Docker version 19.03.12, build 48a66213fe
+* docker-compose version 1.25.4, build 8d51620a
+
+### 1 copiar .env.docker a .env y editar segun configuracion de docker-compose
+```
+cp .env.docker .env
+```
+
+### 2 levantar los contenedores
+```
+docker-compose up -d --build rabbitmq
+docker-compose up -d --build api
+docker-compose up -d --build worker
+docker-compose up -d --build flower
+```
+
+### 3 probar las url, segun los puertos que se hayan definido en el docker-compose
+* http://localhost:5000/ (flask)
+* http://localhost:5555/ (flower, autenticacion segun parametro _'FLOWER_BASIC_AUTH'_ de .env)
+
+# rabbit
 
 ### rabbitmq, install
 * https://www.rabbitmq.com/download.html
@@ -65,6 +89,8 @@ docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-manag
 docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 -e "TZ=America/Lima" rabbitmq:3-management
 docker logs -f --tail 100 rabbitmq
 ```
+
+# CELERY
 
 ### celery, links
 * https://docs.celeryproject.org/en/stable/getting-started/next-steps.html
@@ -115,6 +141,8 @@ PENDING -> STARTED -> SUCCESS
 PENDING -> STARTED -> RETRY -> STARTED -> RETRY -> STARTED -> SUCCESS
 ```
 
+# FLOWER
+
 ### flower install
 ```
 pip install flower
@@ -140,6 +168,8 @@ flower --broker=amqp://guest:guest@localhost:5672/ --port=5555 --basic_auth=admi
 flower -A src --conf=flowerconfig
 ```
 
+# FLASK
+
 ### flask
 * https://flask.palletsprojects.com/en/1.1.x/quickstart/
 * https://stackoverflow.com/questions/20001229/how-to-get-posted-json-in-flask
@@ -163,6 +193,8 @@ python -m src.api
 
 ### pycharm, pycharm run python module
 * https://intellij-support.jetbrains.com/hc/en-us/community/posts/360003879119-how-to-run-python-m-command-in-pycharm-
+
+# DOCKER
 
 ### docker version, Docker version 19.03.12, build 48a66213fe
 ```
