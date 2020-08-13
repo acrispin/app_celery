@@ -1,0 +1,95 @@
+version: '3.7'
+services:
+
+  rabbitmq:
+    image: rabbitmq:3-management
+#    image: rabbitmq:3.8.3-rc.2-management-alpine
+    container_name: app_celery_rabbitmq
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    restart: unless-stopped
+    networks:
+      - app-network
+    volumes:
+      - rabbitmq-volume:/var/lib/rabbitmq
+    env_file: .env
+#    environment:
+#      TZ: "America/Lima"
+#      RABBITMQ_DEFAULT_USER: 'admin'
+#      RABBITMQ_DEFAULT_PASS: '12345678'
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "3"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: app_celery:v1.1.0
+    container_name: app_celery_api
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    networks:
+      - app-network
+    env_file: .env
+    # entrypoint: ["python", "-m", "src.api"]
+    # command: ["python", "-m", "src.api"]
+    command: python -m src.api
+    depends_on:
+      - rabbitmq
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "3"
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: app_celery:v1.1.0
+    container_name: app_celery_worker
+    restart: unless-stopped
+    networks:
+      - app-network
+    env_file: .env
+    command: celery -A src worker -l info --concurrency=8
+    depends_on:
+      - rabbitmq
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "3"
+
+  flower:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: app_celery:v1.1.0
+    container_name: app_celery_flower
+    ports:
+      - "5555:5555"
+    restart: unless-stopped
+    networks:
+      - app-network
+    env_file: .env
+    command: flower -A src --conf=flowerconfig
+    depends_on:
+      - rabbitmq
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "3"
+
+networks:
+  app-network:
+#    external: true
+
+volumes:
+  rabbitmq-volume:
