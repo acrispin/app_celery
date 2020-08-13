@@ -288,6 +288,10 @@ docker volume ls
 docker network ls
 ```
 
+### docker, links
+* https://kelda.io/blog/common-docker-compose-mistakes/
+* https://github.com/vishnubob/wait-for-it
+
 # MARKDOWN, Syntax highlighting
 * https://support.codebasehq.com/articles/tips-tricks/syntax-highlighting-in-markdown
 
