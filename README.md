@@ -1,3 +1,59 @@
+
+## Instalacion modo local (python 3.7)
+
+### 1 copiar .env.local a .env y editar segun configuracion local
+```
+cp .env.local .env
+```
+
+### 2 instalar rabbitmq, si se tiene docker ejecutar lo siguiente
+* https://www.rabbitmq.com/download.html
+``` 
+docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 -e "TZ=America/Lima" rabbitmq:3-management
+```
+
+### 3 crear, activar entorno virtual e instalar dependencias, en winwods (...>venv\Scripts\activate)
+```
+pip install virtualenv
+virtualenv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
+
+### 4 ejecutar api, worker, flower en diferente terminal (se usa '-P threads' para evitar incompatibilidd en windows)
+```
+python -m src.api
+celery -A src worker -l info -P threads
+flower -A src --conf=flowerconfig
+```
+
+### 5 probar las url
+* http://localhost:5000/ (flask)
+* http://localhost:5555/ (flower, atenticacion segun 'FLOWER_BASIC_AUTH' de .env)
+
+### 6 probar servicios, '127.0.0.1' o 'localhost'
+```
+GET /api?first=23&second=34 HTTP/1.1
+Host: 127.0.0.1:5000
+
+POST /api/ HTTP/1.1
+Host: 127.0.0.1:5000
+Content-Type: application/json
+{
+    "first": 123,
+    "second": 938
+}
+
+POST /api/obj/ HTTP/1.1
+Host: 127.0.0.1:5000
+Content-Type: application/json
+{
+    "device": "TemperatureSensor",
+    "value": "20",
+    "timestamp": "25/01/2017 10:10:05"
+}
+```
+
 ### rabbitmq, install
 * https://www.rabbitmq.com/download.html
 ``` 
@@ -74,7 +130,7 @@ flower --broker=redis://localhost:6379/0 --port=5555
 flower --broker=amqp://guest:guest@localhost:5672/ --port=5555
 ```
 
-### flower run with rabbit
+### flower run with rabbit and auth
 ```
 flower --broker=amqp://guest:guest@localhost:5672/ --port=5555 --basic_auth=admin:12345678
 ```
