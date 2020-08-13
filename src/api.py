@@ -43,7 +43,7 @@ def process_task():
 def process_task2():
     content = request.get_json()
     data = content['first'], content['second']
-    result = longtime_add.delay(data)
+    result = longtime_add.delay(*data)
     result = longtime_add.apply_async(data, countdown=10)
     result = longtime_add.apply_async(args=data, countdown=10)
     result = longtime_add.apply_async(kwargs=content, countdown=10)
