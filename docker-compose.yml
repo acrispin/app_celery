@@ -86,6 +86,7 @@ services:
     # verificar la carpeta 'logs/flower' en la raiz del proyecto, en windows docker lo crea
     volumes:
       - ./logs/flower:/app/logs
+      - flower-volume:/app/flower
     env_file: .env
     command: flower -A src --conf=flowerconfig
     depends_on:
@@ -102,3 +103,4 @@ networks:
 
 volumes:
   rabbitmq-volume:
+  flower-volume:

@@ -282,6 +282,12 @@ docker rm $(docker ps -a -q)
 docker rmi $(docker images -a -q)
 ```
 
+### docker, listar volumenes y networks
+```
+docker volume ls
+docker network ls
+```
+
 # MARKDOWN, Syntax highlighting
 * https://support.codebasehq.com/articles/tips-tricks/syntax-highlighting-in-markdown
 

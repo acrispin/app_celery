@@ -7,6 +7,7 @@ FLOWER_MAX_WORKERS = config('FLOWER_MAX_WORKERS', default=5000, cast=int)
 FLOWER_MAX_TASKS = config('FLOWER_MAX_TASKS', default=10000, cast=int)
 FLOWER_PERSISTENT = config('FLOWER_PERSISTENT', default=False, cast=bool)
 FLOWER_DEBUG = config('FLOWER_DEBUG', default=False, cast=bool)
+FLOWER_DB = config('FLOWER_DB', default='flower.db', cast=str)
 
 # https://flower.readthedocs.io/en/latest/config.html
 # https://flower.readthedocs.io/en/latest/man.html
@@ -20,6 +21,7 @@ max_workers = FLOWER_MAX_WORKERS
 max_tasks = FLOWER_MAX_TASKS
 persistent = FLOWER_PERSISTENT
 debug = FLOWER_DEBUG
+db = FLOWER_DB
 # logging = 'INFO'
 
 '''
