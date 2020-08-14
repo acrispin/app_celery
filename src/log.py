@@ -5,10 +5,10 @@ import logging
 from logging.handlers import RotatingFileHandler
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FILE_LOG = 'app.log'
-DIR_LOGS = 'logs'
-DIR_LOGS = os.path.join(BASE_DIR, DIR_LOGS)
-MAX_BYTES = 10*1024*1024  # 10MB
+FILE_LOG = os.path.basename(BASE_DIR) + ".log"
+DIR_NAME_LOGS = 'logs'
+DIR_LOGS = os.path.join(BASE_DIR, DIR_NAME_LOGS)
+MAX_BYTES = 50*1024*1024  # 50MB
 BACKUP_COUNT = 10
 DEBUG = config('DEBUG', default=False, cast=bool)
 LOGGER_LEVEL = logging.DEBUG if DEBUG else logging.INFO
