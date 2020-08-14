@@ -332,3 +332,12 @@ pip uninstall pyodbc
 pip install pyodbc
 pip freeze > requirements.txt  
 ```
+
+# SENTRY
+
+### sentry, instalacion, luego establecer la variable de entorno SENTRY_DSN en .env
+* https://docs.sentry.io/platforms/python/logging/
+```
+pip install --upgrade sentry-sdk
+pip freeze > requirements.txt
+```
