@@ -79,6 +79,9 @@ def get_connection(_autocommit=False):
         _cnxn = pyodbc.connect(CONN_STR, autocommit=_autocommit, timeout=DB_CONNECTION_TIMEOUT)
         _cnxn.timeout = DB_QUERY_TIMEOUT
         return _cnxn
+    except pyodbc.InterfaceError as err:
+        logger.exception(err)
+        raise err
     except pyodbc.DatabaseError as err:
         logger.exception(err)
         raise err
@@ -103,8 +106,8 @@ if __name__ == '__main__':
     try:
         logger.info("Conexion a base de datos correcta, info db: " + info_connection())
     except Exception as ex:
-        logger.error("Error en conexion a base de datos")
-        logger.error(ex)
+        logger.warning("Error en conexion a base de datos")
+        logger.exception(ex)
 
 """
 En la raiz del proyecto ejecutar, db.py debe estar en la carpeta src/
