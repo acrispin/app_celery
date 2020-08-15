@@ -291,6 +291,8 @@ docker network ls
 ### docker, links
 * https://kelda.io/blog/common-docker-compose-mistakes/
 * https://github.com/vishnubob/wait-for-it
+* https://adilsoncarvalho.com/creating-multiple-images-from-a-single-dockerfile-3f69254b6137
+* https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
 
 # MARKDOWN, Syntax highlighting
 * https://support.codebasehq.com/articles/tips-tricks/syntax-highlighting-in-markdown
@@ -340,4 +342,29 @@ pip freeze > requirements.txt
 ```
 pip install --upgrade sentry-sdk
 pip freeze > requirements.txt
+```
+
+# DB
+
+### db, instalacion odbc driver sql server y correccion conexion ssl
+* https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15#debian17
+* https://github.com/microsoft/msphpsql/issues/1023
+
+### db, prueba de concepto con pyodbc, script para testear insert masivo
+* https://docs.microsoft.com/en-us/sql/connect/python/pyodbc/step-3-proof-of-concept-connecting-to-sql-using-pyodbc?view=sql-server-ver15
+* https://github.com/mkleehammer/pyodbc/issues/802
+
+### db, prueba de conexion a la bd dentro del contenedor generado por Dockerfile, con sqlcmd y python
+```
+docker-compose exec api bash
+sqlcmd -S $DB_SERVER,$DB_PORT -d $DB_NAME -U $DB_USER -P $DB_PASSWORD -i /app/info.sql
+python -m src.db
+```
+
+# LINUX
+
+### linux, verificar version de distribucion linux
+```
+cat /etc/os-release
+cat /etc/*-release
 ```
