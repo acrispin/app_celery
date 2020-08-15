@@ -1,8 +1,7 @@
 
-from src.log import logging, fileHandler
+from src.log import setup_custom_logger
 
-logger = logging.getLogger(__name__)
-logger.addHandler(fileHandler)
+logger = setup_custom_logger(__name__)
 
 if __name__ == '__main__':
     logger.info('Inicio')

@@ -2,10 +2,9 @@
 from celery import Celery
 from decouple import config
 
-from .log import logging, fileHandler
+from .log import setup_custom_logger
 
-logger = logging.getLogger(__name__)
-logger.addHandler(fileHandler)
+logger = setup_custom_logger(__name__)
 
 logger.info("Celery, inicio de configuracion")
 

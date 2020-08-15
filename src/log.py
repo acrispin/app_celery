@@ -32,6 +32,13 @@ fileHandler.setFormatter(formatter)
 
 logging = logging
 
+
+def setup_custom_logger(_name):
+    _logger = logging.getLogger(_name)
+    _logger.addHandler(fileHandler)
+    return _logger
+
+
 SENTRY_DSN = config('SENTRY_DSN', default='', cast=str)
 if SENTRY_DSN:
     # https://sentry.io/siunicon-dev/360_python_dev/getting-started/python/

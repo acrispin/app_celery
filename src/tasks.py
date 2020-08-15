@@ -1,10 +1,9 @@
 import time
 from .celery import app
 
-from .log import logging, fileHandler
+from .log import logging, setup_custom_logger
 
-logger = logging.getLogger(__name__)
-logger.addHandler(fileHandler)
+logger = setup_custom_logger(__name__)
 
 
 # para obtener el id del task, se necesitar bind
@@ -24,6 +23,7 @@ def longtime_add(self, first, second):
 def check_obj(self, obj):
     logger.info("Inicio de tarea, esperando 3 segundos, id: " + self.request.id)
     time.sleep(3)
-    logger.info("obj: " + str(obj))
+    if logger.isEnabledFor(logging.DEBUG):
+        logger.debug("obj: " + str(obj))
     logger.info('Finalizacion de tarea')
     return f"OK"

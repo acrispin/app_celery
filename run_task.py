@@ -1,8 +1,7 @@
-from src.log import logging, fileHandler
+from src.log import setup_custom_logger
 from src.tasks import longtime_add
 
-logger = logging.getLogger(__name__)
-logger.addHandler(fileHandler)
+logger = setup_custom_logger(__name__)
 
 if __name__ == '__main__':
     logger.info('Inicio de ejecucion de test')

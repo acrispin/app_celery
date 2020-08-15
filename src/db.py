@@ -1,10 +1,9 @@
 import pyodbc as pyodbc
 from decouple import config
 
-from .log import logging, fileHandler
+from .log import logging, setup_custom_logger
 
-logger = logging.getLogger(__name__)
-logger.addHandler(fileHandler)
+logger = setup_custom_logger(__name__)
 
 DB_SERVER = config('DB_SERVER', default='localhost')
 DB_PORT = config('DB_PORT', default='')

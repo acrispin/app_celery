@@ -2,10 +2,9 @@ from flask import Flask, request, jsonify, abort, make_response
 from decouple import config
 
 from .tasks import longtime_add, check_obj
-from .log import logging, fileHandler
+from .log import logging, setup_custom_logger
 
-logger = logging.getLogger(__name__)
-logger.addHandler(fileHandler)
+logger = setup_custom_logger(__name__)
 
 DEBUG = config('DEBUG', default=False, cast=bool)
 FLASK_HOST = config('FLASK_HOST', default='0.0.0.0', cast=str)
@@ -17,11 +16,15 @@ app = Flask(__name__)
 
 @app.route('/')
 def hello_world():
+    if logger.isEnabledFor(logging.DEBUG):
+        logger.debug(f"{request.method} {request.path}")
     return jsonify({'message': 'Hello, World!'})
 
 
 @app.route('/test/', methods=['POST', 'PUT'])
 def post_json():
+    if logger.isEnabledFor(logging.DEBUG):
+        logger.debug(f"{request.method} {request.path}")
     logger.info(request.is_json)
     logger.info(request.json)
     content = request.get_json()
@@ -33,6 +36,8 @@ def post_json():
 
 @app.route('/api/')
 def process_task():
+    if logger.isEnabledFor(logging.DEBUG):
+        logger.debug(f"{request.method} {request.path}")
     first_num = request.args.get('first')
     second_num = request.args.get('second')
     result = longtime_add.delay(first_num, second_num)
@@ -41,6 +46,8 @@ def process_task():
 
 @app.route('/api/', methods=['POST', 'PUT'])
 def process_task2():
+    if logger.isEnabledFor(logging.DEBUG):
+        logger.debug(f"{request.method} {request.path}")
     content = request.get_json()
     data = content['first'], content['second']
     result = longtime_add.delay(*data)
@@ -52,6 +59,8 @@ def process_task2():
 
 @app.route('/api/obj/', methods=['POST', 'PUT'])
 def process_obj():
+    if logger.isEnabledFor(logging.DEBUG):
+        logger.debug(f"{request.method} {request.path}")
     content = request.get_json()
     result = check_obj.delay(content)
     result = check_obj.apply_async((content,))
