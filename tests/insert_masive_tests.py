@@ -31,11 +31,12 @@ print_status("startup")
 num_rows = 10_000
 data = [(i + 1, f"col{i + 1:06}", 3.14159265 * (i + 1)) for i in range(num_rows)]
 print_status("data loaded")
-print(data[0])
+print("data sample:", data[0])
 
 table_name = "pd_test"
 col_names = ["id", "txt_col", "float_col"]
-ins_sql = f"INSERT INTO {table_name} ({','.join(col_names)}) VALUES ({','.join('?' * len(col_names))})"
+ins_sql = f"INSERT INTO {table_name} ({', '.join(col_names)}) VALUES ({', '.join('?' * len(col_names))})"
+print("sql insert:", ins_sql)
 
 for iteration in range(5):
     t0 = time()
