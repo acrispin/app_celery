@@ -12,6 +12,7 @@ Jinja2==2.11.2
 kombu==4.6.11
 MarkupSafe==1.1.1
 prometheus-client==0.8.0
+psutil==5.7.2
 pyodbc==4.0.30
 python-decouple==3.3
 pytz==2020.1
