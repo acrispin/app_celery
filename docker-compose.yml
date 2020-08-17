@@ -97,6 +97,26 @@ services:
         max-size: "100m"
         max-file: "3"
 
+  job:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: app_celery:v1.1.0
+    container_name: app_celery_job
+    restart: unless-stopped
+    networks:
+      - app-network
+    # verificar la carpeta 'logs/job' en la raiz del proyecto, en windows docker lo crea
+    volumes:
+      - ./logs/job:/app/logs
+    env_file: .env
+    command: python -m src.job
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "10"
+
 networks:
   app-network:
 #    external: true

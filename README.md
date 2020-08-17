@@ -26,6 +26,7 @@ pip install -r requirements.txt
 python -m src.api
 celery -A src worker -l info -P threads
 flower -A src --conf=flowerconfig
+python -m src.job
 ```
 
 ### 5 probar las url
@@ -70,6 +71,7 @@ docker-compose up -d --build rabbitmq
 docker-compose up -d --build api
 docker-compose up -d --build worker
 docker-compose up -d --build flower
+docker-compose up -d --build job
 ```
 
 ### 3 probar las url, segun los puertos que se hayan definido en el docker-compose
