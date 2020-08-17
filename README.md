@@ -21,7 +21,7 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### 4 ejecutar api, worker, flower en diferente terminal (se usa _'-P threads'_ para evitar incompatibilidad en windows)
+### 4 ejecutar api, worker, flower, job en diferente terminal (se usa _'-P threads'_ para evitar error en windows)
 ```
 python -m src.api
 celery -A src worker -l info -P threads
@@ -363,7 +363,7 @@ pip install --upgrade sentry-sdk
 pip freeze > requirements.txt
 ```
 
-# DB
+# DB SQLSERVER
 
 ### db, instalacion odbc driver sql server y correccion conexion ssl
 * https://docs.microsoft.com/en-us/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server?view=sql-server-ver15#debian17
@@ -380,9 +380,9 @@ sqlcmd -S $DB_SERVER,$DB_PORT -d $DB_NAME -U $DB_USER -P $DB_PASSWORD -i /app/in
 python -m src.db
 ```
 
-# POSTGRES
+# DB POSTGRES
 
-### postgres, python psycopg2 
+### db, postgres, python y psycopg2 
 * https://pynative.com/python-postgresql-select-data-from-table/
 * https://pynative.com/psycopg2-python-postgresql-connection-pooling/
 * https://stackoverflow.com/questions/48532301/python-postgres-psycopg2-threadedconnectionpool-exhausted/49366850
