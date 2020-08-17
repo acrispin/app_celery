@@ -380,6 +380,17 @@ sqlcmd -S $DB_SERVER,$DB_PORT -d $DB_NAME -U $DB_USER -P $DB_PASSWORD -i /app/in
 python -m src.db
 ```
 
+# POSTGRES
+
+### postgres, python psycopg2 
+* https://pynative.com/python-postgresql-select-data-from-table/
+* https://pynative.com/psycopg2-python-postgresql-connection-pooling/
+* https://stackoverflow.com/questions/48532301/python-postgres-psycopg2-threadedconnectionpool-exhausted/49366850
+* https://hackersandslackers.com/psycopg2-postgres-python/
+* https://www.postgresqltutorial.com/postgresql-python/transaction/
+* https://www.rockyourcode.com/install-psycopg2-binary-with-docker/
+* https://towardsdatascience.com/connecting-python-to-oracle-sql-server-mysql-and-postgresql-ea1e4523b1e9
+
 # LINUX
 
 ### linux, verificar version de distribucion linux
