@@ -151,6 +151,10 @@ PENDING -> STARTED -> RETRY -> STARTED -> RETRY -> STARTED -> SUCCESS
 * https://medium.com/better-programming/python-celery-best-practices-ae182730bb81
 * https://blog.daftcode.pl/working-with-asynchronous-celery-tasks-lessons-learned-32bb7495586b
 * https://docs.celeryproject.org/en/stable/reference/celery.app.task.html
+* https://docs.celeryproject.org/en/latest/userguide/tasks.html#bound-tasks
+* https://www.vinta.com.br/blog/2018/celery-wild-tips-and-tricks-run-async-tasks-real-world/
+* https://docs.celeryproject.org/en/stable/userguide/tasks.html#automatic-retry-for-known-exceptions
+* https://testdriven.io/blog/retrying-failed-celery-tasks/
 
 # FLOWER
 
