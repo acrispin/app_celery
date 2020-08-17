@@ -155,6 +155,8 @@ PENDING -> STARTED -> RETRY -> STARTED -> RETRY -> STARTED -> SUCCESS
 * https://www.vinta.com.br/blog/2018/celery-wild-tips-and-tricks-run-async-tasks-real-world/
 * https://docs.celeryproject.org/en/stable/userguide/tasks.html#automatic-retry-for-known-exceptions
 * https://testdriven.io/blog/retrying-failed-celery-tasks/
+* https://www.agiliq.com/blog/2015/08/retrying-celery-failed-tasks/
+* https://medium.com/@dwernychukjosh/retrying-asynchronous-tasks-with-celery-221acd385d34
 
 # FLOWER
 
