@@ -30,12 +30,13 @@ app.conf.broker_transport_options = {'max_retries': 4, 'interval_start': 0, 'int
 
 # https://medium.com/better-programming/python-celery-best-practices-ae182730bb81
 # app.conf.update()
-app.conf.update(
-    result_expires=60*60,
-    task_acks_late=False,  # set 'True' when task if idempotent, Late acknowledgment - https://blog.daftcode.pl/working-with-asynchronous-celery-tasks-lessons-learned-32bb7495586b
-    broker_url=CELERY_BROKER_URL,
-    result_backend=CELERY_BROKER_URL
-)
+
+# app.conf.update(
+#     result_expires=60*60,
+#     task_acks_late=False,  # set 'True' when task if idempotent, Late acknowledgment - https://blog.daftcode.pl/working-with-asynchronous-celery-tasks-lessons-learned-32bb7495586b
+#     broker_url=CELERY_BROKER_URL,
+#     result_backend=CELERY_BROKER_URL
+# )
 
 if __name__ == '__main__':
     app.start()
