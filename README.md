@@ -137,9 +137,20 @@ PENDING -> STARTED -> SUCCESS
 ``` python
 >>> from src.celery import app
 >>> res = app.AsyncResult('eae620f1-ecc8-47e9-8291-0f64f060f8a6')
+>>> res.get()
 >>> res.state
 PENDING -> STARTED -> RETRY -> STARTED -> RETRY -> STARTED -> SUCCESS
 ```
+
+### celery, Delay and apply_async waiting forever when the broker is down, faq
+* https://github.com/celery/celery/issues/4296#issuecomment-412526075
+* https://github.com/celery/celery/issues/4627#issuecomment-396907957
+* https://docs.celeryproject.org/en/stable/faq.html
+
+### celery, utils
+* https://medium.com/better-programming/python-celery-best-practices-ae182730bb81
+* https://blog.daftcode.pl/working-with-asynchronous-celery-tasks-lessons-learned-32bb7495586b
+* https://docs.celeryproject.org/en/stable/reference/celery.app.task.html
 
 # FLOWER
 

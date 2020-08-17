@@ -27,3 +27,32 @@ def check_obj(self, obj):
         logger.debug("obj: " + str(obj))
     logger.info('Finalizacion de tarea')
     return f"OK"
+
+
+# Retrying tasks can be tricky
+# Make task idempotent to be sure that if the job is done only once
+# Use “late acknowledgment” for idempotent tasks to protect them against incomplete execution.
+# https://blog.daftcode.pl/working-with-asynchronous-celery-tasks-lessons-learned-32bb7495586b
+# the task will be retried every 60 seconds until it has finally succeeded or failed (maximum 120 times)
+@app.task(bind=True, default_retry_delay=60, max_retries=120, acks_late=True)
+def send_welcome_email_task(self, user_id):
+    # obtener ultima version del usuario desde la bd
+    # user = User.objects.select_for_update().get(id=user_id)
+    user = {}
+    if user.is_welcome_email_sent:
+        return "OK"
+    try:
+        # enviar email al usuario
+        # send_email(email=user.email, subject='Welcome', content='...')
+        pass
+    except Exception as ex:  # use SMTPException
+        self.retry(exc=ex)
+    else:  # no exception
+        # guardar el estado de procesado en la bd
+        user.is_welcome_email_sent = True
+        user.save()
+    finally:
+        # the finally clause is executed in any event
+        # the finally clause is useful for releasing external resources (such as files or network connections),
+        # regardless of whether the use of the resource was successful.
+        pass
