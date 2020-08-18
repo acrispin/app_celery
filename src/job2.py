@@ -90,7 +90,7 @@ def wrap_job():
     schedule.every(JOB_INTERVAL_SECONDS).seconds.do(job)
 
 
-if __name__ == '__main__':
+def run():
     calculate_dates()
     logger.info(f"Inicio de configuracion de JOB_2 con intervalo de '{JOB_INTERVAL_SECONDS}' segundos y "
                 f"entre las [{HORA_INI.time()} - {HORA_FIN.time()}] horas diariamente.")
@@ -103,6 +103,10 @@ if __name__ == '__main__':
     while True:
         schedule.run_pending()
         time.sleep(1)
+
+
+if __name__ == '__main__':
+    run()
 
 """
 python -m src.job2
