@@ -49,7 +49,7 @@ def job():
 # schedule.every(JOB_INTERVAL_SECONDS).seconds.do(job)
 
 if __name__ == '__main__':
-    logger.info(f"Inicio de configuracion de job con intervalo de {JOB_INTERVAL_SECONDS}")
+    logger.info(f"Inicio de configuracion de job con intervalo de {JOB_INTERVAL_SECONDS} segundos.")
     if JOB_RUN_IMMEDIATELY:
         logger.info("Ejecucion inmediata de job.")
         job()
