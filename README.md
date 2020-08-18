@@ -316,6 +316,24 @@ docker network ls
 # MARKDOWN, Syntax highlighting
 * https://support.codebasehq.com/articles/tips-tricks/syntax-highlighting-in-markdown
 
+# PYTHON datetime
+``` python
+import datetime
+str( datetime.datetime.now() + datetime.timedelta(hours=1) + datetime.timedelta(minutes=0) )
+str( datetime.datetime.now() + datetime.timedelta(days=1) )
+str( datetime.datetime.now() + datetime.timedelta(hours=1) )
+str( datetime.datetime.now() + datetime.time(2, 45, 0) )
+str( datetime.datetime.now() + datetime.timedelta(**{'hours': 1}) )
+str( datetime.datetime.now() + datetime.timedelta(**{'days': -1}) )
+str( datetime.timedelta(90) )
+datetime.datetime.now().replace(**{'second': 0, 'minute': 0, 'hour': 0})
+datetime.datetime.now().replace(**{'microsecond': 0, 'second': 0, 'minute': 0, 'hour': 0})
+datetime.datetime.now().replace(**{'microsecond': 0, 'second': 0, 'minute': 49, 'hour': 5})
+d1 = datetime.datetime.now().replace(**{'microsecond': 0, 'second': 0, 'minute': 0, 'hour': 0, 'day': 1})
+d2 = datetime.datetime.now().replace(**{'microsecond': 0, 'second': 0, 'minute': 0, 'hour': 0, 'day': 3})
+(d2 - d1).days
+```
+
 # VIRTUALENV and PIP
 
 ### upgrade pip, install virtualenv, en linux con sudo, en windows cmd en modo administrador
