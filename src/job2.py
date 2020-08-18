@@ -12,15 +12,15 @@ from .log import logging, setup_custom_logger
 logger = setup_custom_logger(__name__)
 
 JOB_FORMATO_HORA = config('JOB_2_FORMATO_HORA', default='%H:%M:%S', cast=str)
-JOB_HORA_INICIO = config('JOB_2_HORA_INICIO', default='08:01:05', cast=str)
-JOB_HORA_FIN = config('JOB_2_HORA_FIN', default='08:02:15', cast=str)
+JOB_HORA_INICIO = config('JOB_2_HORA_INICIO', default='21:10:17', cast=str)
+JOB_HORA_FIN = config('JOB_2_HORA_FIN', default='02:30:10', cast=str)
 JOB_INTERVAL_SECONDS = config('JOB_2_INTERVAL_SECONDS', default=3, cast=int)
 JOB_RUN_IMMEDIATELY = config('JOB_2_RUN_IMMEDIATELY', default=True, cast=bool)
 
 TIME_INI = datetime.strptime(JOB_HORA_INICIO, JOB_FORMATO_HORA).time()
 TIME_FIN = datetime.strptime(JOB_HORA_FIN, JOB_FORMATO_HORA).time()
-HORA_INI = None
-HORA_FIN = None
+HORA_INI = datetime.now()
+HORA_FIN = datetime.now()
 
 
 def get_hora_ini():
@@ -40,7 +40,7 @@ def calculate_dates():
     global HORA_INI, HORA_FIN
     HORA_INI = get_hora_ini()
     HORA_FIN = get_hora_fin()
-    logger.debug(f"Hora inicio: {HORA_INI}, Hora fin: {HORA_FIN}")
+    logger.debug(f"Actualizando Hora inicio: {HORA_INI}, Hora fin: {HORA_FIN}")
 
 
 """
