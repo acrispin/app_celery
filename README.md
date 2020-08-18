@@ -322,7 +322,7 @@ import datetime
 str( datetime.datetime.now() + datetime.timedelta(hours=1) + datetime.timedelta(minutes=0) )
 str( datetime.datetime.now() + datetime.timedelta(days=1) )
 str( datetime.datetime.now() + datetime.timedelta(hours=1) )
-str( datetime.datetime.now() + datetime.time(2, 45, 0) )
+str( datetime.time(2, 45, 0) )
 str( datetime.datetime.now() + datetime.timedelta(**{'hours': 1}) )
 str( datetime.datetime.now() + datetime.timedelta(**{'days': -1}) )
 str( datetime.timedelta(90) )
@@ -332,6 +332,19 @@ datetime.datetime.now().replace(**{'microsecond': 0, 'second': 0, 'minute': 49, 
 d1 = datetime.datetime.now().replace(**{'microsecond': 0, 'second': 0, 'minute': 0, 'hour': 0, 'day': 1})
 d2 = datetime.datetime.now().replace(**{'microsecond': 0, 'second': 0, 'minute': 0, 'hour': 0, 'day': 3})
 (d2 - d1).days
+(d2 - d1).total_seconds()
+
+# datetime -> str 'yyyy-mm-dd HH:MM:SS.fff'
+datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")  
+datetime.datetime.strftime(datetime.datetime.now(), "%Y-%m-%d %H:%M:%S.%f") 
+# str -> datetime
+datetime.datetime.strptime('2020-08-19', "%Y-%m-%d")
+datetime.datetime.strptime('2020-08-19 15:24:00', "%Y-%m-%d %H:%M:%S")
+datetime.datetime.strptime('2020-08-19 15:24:00.000', "%Y-%m-%d %H:%M:%S.%f")
+datetime.datetime.strptime('2020-08-19 15:24:17.287', "%Y-%m-%d %H:%M:%S.%f")
+# Solo la hora
+datetime.datetime.strptime('2020-08-19 15:24:17.287', "%Y-%m-%d %H:%M:%S.%f").time()
+datetime.datetime.now().time().strftime("%H:%M:%S.%f")
 ```
 
 # VIRTUALENV and PIP
