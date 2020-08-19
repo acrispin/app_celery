@@ -373,6 +373,7 @@ virtualenv --version
 ```
 virtualenv -p /usr/bin/python3 venv  
 source venv/bin/activate
+pip install -r requirements.txt
 deactivate
 ```
 
@@ -380,6 +381,7 @@ deactivate
 ```
 virtualenv -p /c/Program\ Files/Python37/python.exe venv  
 source venv/Scripts/activate
+pip install -r requirements.txt
 deactivate
 ```
 
@@ -387,6 +389,7 @@ deactivate
 ```
 ...>virtualenv -p "C:\Program Files\Python37\python.exe" venv 
 ...>venv\Scripts\activate
+...>pip install -r requirements.txt
 ...>deactivate
 ```
  
