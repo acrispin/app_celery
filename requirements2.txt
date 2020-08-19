@@ -1,0 +1,14 @@
+# Lista general de librerias de la aplicacion
+# Para actualizar, activar el entorno virtual y ejecutar lo siguiente
+# $ pip install -r requirements2.txt
+# $ pip freeze > requirements.txt
+celery
+Flask
+flower
+pip-autoremove
+psutil
+pyodbc
+python-decouple
+requests
+schedule
+sentry-sdk
