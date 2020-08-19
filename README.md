@@ -397,6 +397,15 @@ pip install pyodbc
 pip freeze > requirements.txt  
 ```
 
+### pip, pip-autoremove
+* https://github.com/invl/pip-autoremove
+```
+pip install pip-autoremove
+pip-autoremove --help
+pip-autoremove pyinstaller -y
+pip freeze > requirements.txt
+```
+
 # SENTRY
 
 ### sentry, instalacion, luego establecer la variable de entorno SENTRY_DSN en .env
