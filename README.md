@@ -316,7 +316,8 @@ docker network ls
 # MARKDOWN, Syntax highlighting
 * https://support.codebasehq.com/articles/tips-tricks/syntax-highlighting-in-markdown
 
-# PYTHON datetime
+# PYTHON
+### python, datetime
 ``` python
 import datetime
 str( datetime.datetime.now() + datetime.timedelta(hours=1) + datetime.timedelta(minutes=0) )
@@ -345,6 +346,17 @@ datetime.datetime.strptime('2020-08-19 15:24:17.287', "%Y-%m-%d %H:%M:%S.%f")
 # Solo la hora
 datetime.datetime.strptime('2020-08-19 15:24:17.287', "%Y-%m-%d %H:%M:%S.%f").time()
 datetime.datetime.now().time().strftime("%H:%M:%S.%f")
+```
+
+### python, pyinstaller
+* https://medium.com/@mounirboulwafa/creating-a-single-executable-file-exe-from-a-python-program-abda6a41f74f
+* https://stackoverflow.com/questions/48757977/how-to-include-dependencies-from-venv-directory-when-running-pyinstaller-for-pro
+* https://medium.com/@liron92/pyinstaller-with-pandas-problems-solutions-and-workflow-with-code-examples-c72973e1e23f
+* https://kezunlin.me/post/da9d93d6/
+* https://awesome-python.com/
+``` python
+pip install pyinstaller  
+pyinstaller --clean --onefile main.py
 ```
 
 # VIRTUALENV and PIP

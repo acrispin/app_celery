@@ -43,3 +43,4 @@ queue/
 output/
 
 flower.*
+*.spec
