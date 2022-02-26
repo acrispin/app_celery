@@ -10,7 +10,7 @@ cp .env.local .env
 ### 2 instalar rabbitmq, si se tiene docker ejecutar lo siguiente
 * https://www.rabbitmq.com/download.html
 ``` 
-docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 -e "TZ=America/Lima" rabbitmq:3-management
+docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 -e "TZ=America/Lima" rabbitmq:3.9.11-management
 ```
 
 ### 3 crear, activar entorno virtual e instalar dependencias, en winwods _(...>venv\Scripts\activate)_
