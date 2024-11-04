@@ -10,7 +10,9 @@ cp .env.local .env
 ### 2 instalar rabbitmq, si se tiene docker ejecutar lo siguiente
 * https://www.rabbitmq.com/download.html
 ```sh
-docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 -e "TZ=America/Lima" rabbitmq:3.12.0-management
+docker run -d --name rabbitmq_dev -p 5672:5672 -p 15672:15672 -e "TZ=America/Lima" rabbitmq:3.12.13-management
+docker logs -f rabbitmq_dev
+docker rm -f rabbitmq_dev
 # luego acceder a http://localhost:15672/ (guest/guest)
 ```
 
@@ -455,3 +457,10 @@ python -m src.db
 cat /etc/os-release
 cat /etc/*-release
 ```
+
+## FaspApi
+* https://coffeebytes.dev/python-fastapi-el-mejor-framework-de-python/
+* https://fastapi.tiangolo.com/deployment/docker/
+
+## Get exception description and stack trace which caused an exception, all as a string
+* https://stackoverflow.com/questions/4564559/get-exception-description-and-stack-trace-which-caused-an-exception-all-as-a-st
